@@ -1,3 +1,4 @@
+import FileUpload from "@/components/FileUpload";
 import { Button } from "@/components/ui/button";
 import { UserButton, auth } from "@clerk/nextjs";
 import { LogIn } from "lucide-react";
@@ -17,16 +18,20 @@ export default async function Home() {
           </div>
 
           <div className="flex mt-2">
-            { isAuth && <Button>Start Chat</Button> }
+            {isAuth && <Button>Start Chat</Button>}
           </div>
           <p className="max-w-xl mt-1 text-lg text-slate-600">
-            Join thousands of users to instantly answer questions and understand research with AI.
+            Join thousands of users to instantly answer questions and understand
+            research with AI.
           </p>
 
           <div className="w-full mt-4">
-            {isAuth ? (<h1>fileupload</h1>) : (
+            {isAuth ? (
+              <FileUpload />
+            ) : (
               <Link href="/sign-in">
-                <Button>Login to Start
+                <Button>
+                  Login to Start
                   <LogIn className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -35,5 +40,5 @@ export default async function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
